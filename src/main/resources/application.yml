@@ -1,0 +1,33 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    name: dualeasy-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: dualeasy-auth
+          uri: http://localhost:8080
+          predicates:
+            - Path=/auth/token
+        - id: dualeasy-service
+          uri: http://localhost:8090
+          predicates:
+            - Path=/services/**
+        - id: dualeasy-review
+          uri: http://localhost:8100
+          predicates:
+            - Path=/feedback
+        - id: dualeasy-search
+          uri: http://localhost:8110
+          predicates:
+            - Path=/feedback
+security:
+  auth-service-url: http://localhost:8080
+  public-paths:
+    - /auth
+    - /test
+    - /service/services
+
+
