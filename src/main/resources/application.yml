@@ -18,11 +18,11 @@ spring:
         - id: dualeasy-review
           uri: http://localhost:8100
           predicates:
-            - Path=/feedback
+            - Path=/feedback/**
         - id: dualeasy-search
           uri: http://localhost:8110
           predicates:
-            - Path=/feedback
+            - Path=/search
 security:
   auth-service-url: http://localhost:8080
   public-paths:
